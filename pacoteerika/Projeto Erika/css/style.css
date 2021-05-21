@@ -1,0 +1,435 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+html,body{ height: 100%;}
+
+/*Classe de auxílio*/
+.center{ /*limitar a tela(contexto), container*/
+    max-width: 1000px;
+    padding: 0 2%;
+    margin: 0 auto;
+}
+.clear{
+    clear: both;
+}
+/* * * *  */
+
+.layer{/*layer dá um efeito de imagem mais escura pra sobrescrever o texto*/
+    position: absolute; /*fica absoluto em relação ao relative mais proximo, no caso ao do main*/
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+section.main{
+    position: relative;/*relative aqui, ai o absolute ligado é o layer q vai preencher com opacidade toda a imagem q tá aqui no main*/
+    background-image: url(../imagens/bgheader.jpg);
+    background-attachment: fixed;
+    background-size: cover;/*cover vai ajustar a imagem*/
+    background-position: center;/*centraliza a imagem e a deixa certinha*/
+    width: 100%;
+    padding: 15px 0; /*distancia pra onde vai começar a logo e o menu*/
+    min-height: 600px;/*menor q isso nao pode!minimo tem q ser isso, se for maior o background cresce e acomapnha*/
+}
+
+section.main header{/*a ordem é: relative pro header, onde tem o conteudo, z index é o maior pois queremos destaque a eles,depois position relative pra imagem e o absolute do layer em relação à imagem, porém o layer n ganha do menu, por isso q seu z-index é menor, q fica mais por baixo */
+    position: relative; /*vai ser jogado pra frente da ovelay preta...fica relativa, ou seja, age como uma div pai*/
+    z-index: 2;/*quanto mais alto, mais acima, faz com q o menu fique por cima da imagem e do layer*/
+    border-bottom: 0.1px solid white;
+}
+
+.icons-social{/*manda os icones pra direita*/
+    float: right;
+}
+
+.icons-social a{/*personaliza eles*/
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+    margin: 0 15px;
+}
+
+.logo{/*manda logo pra esquerda*/
+    float: left;
+    font-family: 'Indie Flower', cursive;
+    color: white;
+    font-size: 32px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+nav.mobile{
+    display: none;
+    float: right;
+}
+nav.mobile ul{
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 96px;
+    list-style-type: none;
+    background-color: white;
+    width: 100%;
+    z-index: 2;/*tá dentro do main header */
+}
+
+nav.mobile li{
+    padding: 12px 0;
+    text-align: center;
+    border-bottom: 1px solid red;
+}
+
+nav.mobile a{
+    display: block;
+    text-decoration: none;
+    color: red;
+    font-weight: bold;
+}
+
+nav.mobile > i{
+    color: white;
+    cursor: pointer;
+    font-size: 30px;
+    position: relative;
+    top: 27px;
+    left: -10px;
+}
+
+nav.desktop ul li:hover{
+    text-decoration-line: underline;
+}
+
+nav.desktop{/*mnda pra direita*/
+    float: right;
+    margin-top: 33px;
+}
+
+nav.desktop > ul{/*pega  diretamente a primeira ul*/
+    list-style-type: none;
+    position: relative;/*se torna div pai das ul do desktop, ou seja , a primeira é a refe^rencia*/
+}
+
+
+nav.desktop ul li{ /*caracterisitcas gerais da li*/
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+ul.submenu-desktop{/*ul do submenu em si*/
+    display: none;
+    position: absolute;
+    background-color: aqua;
+    left: -17px;
+    top: 20px;
+}
+
+nav.desktop > ul > li:hover > ul.submenu-desktop{/*ativar submenu quando passar por cime*/
+    display: block;
+}
+
+
+nav.desktop > ul > li{ /* dentro da nav , dentro do desktop, dentro da ul, dentro da li, só as gerais, especificas do submenu precisa de  '>'*/
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 17px;
+    font-weight: bold;
+    position: relative;
+}
+
+nav.desktop a{
+    color: white;
+    text-decoration: none;
+}
+
+.conteudo-header{/*div geral q tem o conteudo todo em si*/
+    margin:80px 0;
+    max-width: 700px; /*responsivo, n vai deixar quebrar, sempre vai limitar e ficar desse tamnaho mesmo q redimensione, vai ficar visivel*/
+    /*deixando o conteudo à a mostra com z-index*/
+    position: relative; /*relativo torna-se div pai em relação ao absolute q é o layer*/
+    z-index: 1;/*ai pode ser sobreposto*/ /*como aqui é o 1, quando criar o menu mobile ,  o z index do menu mobile vai ser maior q esse aqui*/
+}
+
+.conteudo-header h2{
+    font-size: 44px;
+    color: white;
+    font-weight: lighter;
+}
+
+.conteudo-header p{
+    color: white;
+    margin-top: 18px;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+.conteudo-header h2 > span{
+    color: red;
+    font-weight: bold;
+}
+
+.conteudo-header a{
+    display: block;/*pra ficar em bloco*/
+    width: 177px;
+    height: 44px;
+    background: red;
+    text-align:center;
+    line-height: 44px;/*alinha na vertical*/
+    color:white;
+    position: absolute;
+    z-index: 2;
+    border-radius: 22px;
+    text-decoration: none;
+    margin-top: 26px;
+    font-weight: bolder;
+}
+
+.chamada-produtos{
+    width: 100%;
+    text-align: center;
+    padding: 27px 2%;
+    background :rgb(220,220,220);
+}
+
+.borda{
+    border-top: 2px solid red;
+    margin-bottom: 20px;
+    max-width: 800px;
+    position: relative;
+    left: 45px;
+    text-align: center;
+}
+
+.chamada-produtos h2{
+    display: inline-block;
+    color: red;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/*
+vitrine destaque do outro projeto
+*/
+
+section.parallax{
+    width: 100%;
+    min-height: 300px;
+    padding: 40px 0;
+    /*ajeitando*/
+    background-image: url(../imagens/bgparallax.jpg);
+    background-size: cover;
+    background-position: center;
+    /*configurando overlay*/
+    position: relative;/*torna div'pai' de refencia pra o absolute do overlay*/
+    /*parallax em si*/
+    background-attachment: fixed;
+}
+
+section.parallax > .center{
+    position: relative;
+    z-index: 2;
+    max-width: 960px;
+    color: white;
+}
+
+section.parallax h2{
+    text-align: center;
+}
+section.parallax p{
+    margin-top: 15px;
+    text-align: center;
+}
+
+.overlay-parallax{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(20, 20, 20, 0.6);
+}
+
+section.final-section{/*última div geral q engloba  todo o contato e a descricao do usuário etc*/
+    padding: 50px 0;
+}
+
+.w50{
+    width: 50%;
+    float: left;
+    padding: 0 20px;
+    margin: 30px 0;
+}
+
+.w100{
+    width: 100%;
+}
+
+section.final-section h2{
+    font-weight:600;
+    color: red;
+    font-size: 25px;
+    display: inline-block;
+}
+
+section.final-section h2:hover{
+    font-weight: bolder;
+}
+
+.contato form{
+    margin-top: 15px;
+}
+
+.contato input:not([type=submit]){
+    width: 100%;
+    height: 40px;
+    border: 1px solid black;
+    padding-left: 8px;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.contato textarea{
+    width: 100%;
+    height: 90px;
+    padding: 8px;
+    margin-top: 10px;
+    border-color: black;
+    font-size: 18px;
+    resize: none;
+}
+
+.contato input[type=submit]{
+    display: block; /*display block quebra pra baixo... inline block quebra lado a lado, ou quanto tá sozinho reduz a si*/
+    width: 100px;
+    height: 33px;
+    cursor: pointer;
+    color: white;
+    border: 0;
+    background-color: red;
+    border-radius: 30px; 
+    margin-top: 10px;
+    font-weight: bolder;
+}
+
+.contato input[type=submit]:hover{
+    background-color: black;
+    color: white;
+    font-size: larger;
+    transition: 1s;
+}
+
+.zap{/*manda os icones pra direita*/
+    float: right;
+    position: relative;
+    top: -47px;
+    left: -40px;
+}
+
+.zap a{/*personaliza eles*/
+    color: green;
+    text-decoration: none;
+    font-size: 48px;
+}
+
+.equipe-single{
+	padding:10px 8px;
+	border: 1px solid #ccc;
+	min-height: 240px;
+	padding-bottom: 30px;
+    -webkit-box-shadow: 6px -3px 23px -2px rgba(97,97,97,0.87); 
+    box-shadow: 6px -3px 23px -2px rgba(97,97,97,0.87);
+}
+
+
+.topo-box-usuario{/*borda do usuario q separa a descrição*/
+    padding-bottom:10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.box-avatar{
+    display: inline-block;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: #ccc;
+	vertical-align: middle;
+    /*background-image pra aplicar foto da erika*/
+}
+
+.info-usuario{/*meche no venderoa / e no nome do usuario*/
+    display: inline-block;
+    color: rgb(90, 88, 88);
+    padding-left: 8px;
+	vertical-align: middle;
+}
+    
+
+.descricao-usuario-box{
+    font-size: 14px;
+    margin-top: 10px;
+    line-height: 25px;
+}
+
+.time > .w50{/*pega o w50 e reescreve ele , mas só no do time, q é onde queremos dar um espçamentos entre tabelas.. ai pra n estourar o 50%, fazemos isso*/
+    width: 48%;
+    margin: 15px 1%;
+}
+
+footer{
+    background-color: rgb(126, 24, 24);
+    width: 100%;
+    padding: 20px 2%;
+    color: white;
+    text-align: center;
+}
+
+footer h3{
+    font-weight: 300;
+    font-style: italic;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 768px){
+
+    nav.desktop{
+        display: none;
+    }
+
+    nav.mobile{
+        display: block;
+    }
+
+    .w50{
+        width: 100%;
+    }
+    .equipe-single{
+        margin-top: 20px;
+    }
+
+    .borda{
+      left: 0;
+       width: 100%;
+    }
+
+    .time > .w50{
+		width: 100%;
+		margin:15px 0;
+	}
+	.box-planos-single{width: 100%;margin:10px 0;}
+
+}
+
+@media screen and (max-width: 900px){
+    .time > .w50{
+        width: 100%;
+    }
+}
